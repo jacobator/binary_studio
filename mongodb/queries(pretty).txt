@@ -1,0 +1,56 @@
+Поиск всех студентов у которых score > 93% и меньше 95% по любому из типов выполненных заданий:
+
+db.results.find({
+	scores: {
+		$elemMatch: {
+			$and: [
+				{
+					score: {
+						$gt: 93
+					}
+				},
+				{
+					score: {
+						$lt: 95
+					}
+				}
+			]
+		}
+	}
+})
+
+
+Запрос-аггрегация для выборки всех студентов у которых результат по экзамену более 90%:
+
+db.results.aggregate([
+	{
+		$unwind: "$scores" 
+	},
+	{
+		$match: {
+			$and: [
+			{
+				"scores.type": "exam"
+			},
+			{
+				"scores.score": {
+					$gt: 90
+				}
+			}
+			]
+		}
+	}
+])
+
+Студенту с именем Vinnie Auerbach добавить поле “accepted” со значением true:
+
+db.results.update(
+	{
+		name: "Vinnie Auerbach"
+	},
+	{
+		$set: {
+			accepted: true
+		}
+	}
+)
