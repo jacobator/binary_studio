@@ -1,0 +1,127 @@
+header {
+	font-size: 2em;
+	border-bottom: 1px solid silver;
+}
+
+#logo, #title {
+	vertical-align: middle;
+}
+
+#main-menu {
+	width: 200px;
+	background: lavenderblush;
+	float: left;
+}
+
+#main-menu > ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#main-menu > ul > li > a {
+	text-decoration: none;
+	color: black;
+	display: block;
+	padding: 5px;
+	border-bottom: 1px solid lightpink;
+}
+
+#main-menu > ul > li > a:hover {
+	background: lightpink;
+}
+
+main {
+	overflow: hidden;
+	text-align: center;
+	border-left: 1px solid silver;
+}
+
+#upper-section {
+	border-bottom: 1px solid silver;
+}
+
+#upper-section > article {
+	width: 250px;
+}
+
+#lower-section > article {
+	text-align: left;
+	max-width: 400px;
+}
+
+article {
+	background: powderblue;
+	overflow: hidden;
+	line-height: 150px;
+	margin: 10px;
+	border: 1px solid silver;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+footer {
+	text-align: center;
+}
+
+#footer-data {
+	border-top: 1px solid silver;
+	background: moccasin;
+}
+
+#footer-data > div {
+	width: 33.33%;
+	float: left;
+	box-sizing: border-box;
+	line-height: 50px;
+	height: 50px;
+	overflow: hidden;
+	border-right: 1px solid silver;
+}
+
+#footer-data > div:last-child {
+	border-right: none;
+}
+
+#footer-data::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#copyright {
+	border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+}
+
+#copyright > div {
+	line-height: 50px;
+	height: 50px;
+}
+
+p {
+	margin: 5px;
+	line-height: normal;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+header, #mid-section, footer {
+	background: lavender;
+}
+
+ .ribbon {
+	position: relative;
+}
+
+.ribbon::before {
+	content: "";
+	display: block;
+	background: yellowgreen;
+	width: 100px;
+	height: 20px;
+	position: absolute;
+	right: -30px;
+	top: 10px;
+	transform: rotate(45deg);
+} 
