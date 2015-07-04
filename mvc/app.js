@@ -22,7 +22,6 @@ var Controller = function(controllerData) {
 	}
 	//starting check changes function
 	var self = this;
-	//setInterval((function(self) { return function() { self.checkModel() } })(this), 100);
 	setInterval(function() {self.checkModel();}, 100);
 	//adding click handlers
 	var activateClickHandler = function(e) {
