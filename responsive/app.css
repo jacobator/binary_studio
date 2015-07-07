@@ -1,0 +1,151 @@
+body {
+	max-width: 1200px;
+	background: #d1e7f4;
+	margin: auto;
+}
+
+header {
+	margin-bottom: 5px;
+}
+
+#logo {
+	background: url(http://placehold.it/600x100?text=WIDE+LOGO);
+	width: 600px;
+	height: 100px;
+	float: left;
+}
+
+#search {
+	box-sizing: border-box;
+	display: block;
+	height: 30px;
+	width: 300px;
+	padding: 5px;
+	margin-top: 35px;
+	float: right;
+}
+
+nav ul {
+	background: lavenderblush;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+nav li {
+	width: 100px;
+	display: inline-block;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+	display: block;
+	padding: 5px;
+	height: 17px;
+	border-bottom: 3px solid lightpink;
+}
+
+nav a:hover {
+	background: lightpink;
+}
+
+aside {
+	width: 40%;
+	float: right;
+}
+
+aside article {
+	background: lightgrey;
+	padding: 5px;
+	margin-top: 5px;
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
+main {
+	width: 60%;
+	float: left;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+main img {
+	float: left;
+	padding: 5px;
+}
+
+footer {
+	text-align: center;
+	border-top: 1px solid black;
+	background: lightgrey;
+	line-height: 30px;
+}
+
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+@media screen and (max-width: 919px) {
+	#logo {
+		float: none;
+		margin: auto;
+	}
+
+	body {
+		max-width: 640px;
+	}
+
+	#search {
+		margin-top: 5px;
+	}
+
+	#search, main, aside {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 639px) {
+	body {
+		min-width: 320px;
+	}
+
+	#logo {
+		background: url(http://placehold.it/320x100?text=NARROW+LOGO);
+		width: 320px;
+	}
+
+	nav {
+		position: relative;
+		height: 30px;
+	}
+
+	nav ul {
+		position: absolute;
+		width: 100%;
+	}
+
+	nav ul::before {
+		content: "↓ menu ↓";
+		display: block;
+		padding: 5px;
+		height: 17px;
+		border-bottom: 3px solid lightpink;
+	}
+
+	nav li {
+		display: none;
+		width: 100%;
+	}
+
+	nav:hover li {
+		display: block;
+	}
+
+	aside {
+		display: none;
+	}
+}
