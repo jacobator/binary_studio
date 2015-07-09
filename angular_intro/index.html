@@ -29,7 +29,7 @@
 		<li ng-repeat="customer in customers | filter: customerKey">
 			<img ng-src="{{customer.avatar}}">
 			<span>{{customer.name | nameFilter}} ({{customer.city}}, {{customer.age}} y.o.)</span>
-			<a href title="delete customer" ng-click="deleteCustomer($index)">&#x2716;</a>
+			<a href title="delete customer" ng-click="deleteCustomer(customers.indexOf(customer))">&#x2716;</a>
 		</li>
 	</ul>
 </div>
