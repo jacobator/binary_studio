@@ -1,82 +1,31 @@
-#goods-app {
-	width: 400px;
-	margin: 20px auto;
-	padding: 15px;
-	-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
-	-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
-	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+body {
+	max-width: 1200px;
+	margin: auto;
 }
 
-#input {
-	width: 100%;
-	box-sizing: border-box;
+#products-list, #customers-list {
+	width: 600px;
+	float: left;
+	padding: 20px;
+	box-sizing:border-box;
 }
 
-#goods-list {
-	list-style: none;
-	padding: 0;
-}
-
-.btn-delete {
-	visibility: hidden;
-	text-decoration: none;
-	color: lightgrey;
-	margin-left: 4px;
-}
-
-.btn-delete:hover {
-	color: #dd6060;
-}
-
-.goods-item{
-	margin-top: -1px;
-}
-
-.goods-item:hover > .btn-delete {
-	visibility: visible;
-}
-
-.goods-name {
-	padding: 0;
-	padding-left: 5px;
-	height: 30px;
-	box-sizing: border-box;
-	width: 360px;
-	border: none;
-	border-top: 1px solid lightgrey;
-	border-bottom: 1px solid lightgrey;
-}
-
-.goods-name::-ms-clear {
-	display: none;
-}
-
-.goods-name:not([readonly]):focus {
-	border-top: 3px solid lightgrey;
-	border-bottom: 3px solid lightgrey;
-	outline: none;
-}
-
-.goods-name::selection {
-	background: lightgrey;
-}
-
-.selected .goods-name {
-	text-decoration: line-through;
-	opacity: .5;
-}
-
-.checkbox {
-	width: 15px;
-	height: 15px;
-	margin-right: 5px;
-	vertical-align:middle;
-}
-
-#mark-all {
-	margin-right: 10px;
-}
-
-#btn-delete-selected {
+.price, .add-btn {
 	float: right;
+}
+
+#customers-list img {
+	vertical-align: middle;
+	border-radius: 50%;
+}
+
+#customers-list a {
+	text-decoration: none;
+	color: #dd6060;
+	float: right;
+	margin: 13px;
+}
+
+li:nth-child(2n) {
+	background: #eee;
 }
