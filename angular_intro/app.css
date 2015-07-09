@@ -4,8 +4,7 @@ body {
 }
 
 #products-list, #customers-list {
-	width: 50%;
-	min-width: 450px;
+	width: 600px;
 	float: left;
 	padding: 20px;
 	box-sizing:border-box;
