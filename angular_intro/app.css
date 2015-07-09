@@ -1,0 +1,32 @@
+body {
+	max-width: 1200px;
+	margin: auto;
+}
+
+#products-list, #customers-list {
+	width: 50%;
+	min-width: 450px;
+	float: left;
+	padding: 20px;
+	box-sizing:border-box;
+}
+
+.price, .add-btn {
+	float: right;
+}
+
+#customers-list img {
+	vertical-align: middle;
+	border-radius: 50%;
+}
+
+#customers-list a {
+	text-decoration: none;
+	color: #dd6060;
+	float: right;
+	margin: 13px;
+}
+
+li:nth-child(2n) {
+	background: #eee;
+}
