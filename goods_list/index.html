@@ -1,37 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>task 8</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Goods app</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="app.js"></script>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 	<link rel="stylesheet" href="app.css">
 </head>
-<body ng-app="storeApp" ng-controller="ListController">
-<div id="products-list">
-	<button ng-click="toggle('productsVisibility')">Toggle products view</button>
-	<button class="add-btn" ng-click="addProduct()">Add product</button>
-	<input type="text" placeholder="search by name or price" ng-model="productKey">
-	<ul ng-show="productsVisibility">
-		<h3>Products ({{products.length}} records):</h3>
-		<li ng-repeat="product in products | filter: productKey">
-			<span>{{product.name}}</span>
-			<span class="price">{{product.price | currency}}</span>
-		</li>
-	</ul>
-</div>
-<div id="customers-list">
-	<button ng-click="toggle('customersVisibility')">Toggle customers view</button>
-	<button class="add-btn" ng-click="addCustomer()">Add customer</button>
-	<input type="text" placeholder="search by name only" ng-model="customerKey.name">
-	<ul ng-show="customersVisibility">
-		<h3>Customers ({{customers.length}} records):</h3>
-		<li ng-repeat="customer in customers | filter: customerKey">
-			<img ng-src="{{customer.avatar}}">
-			<span>{{customer.name | nameFilter}} ({{customer.city}}, {{customer.age}} y.o.)</span>
-			<a href title="delete customer" ng-click="deleteCustomer(customers.indexOf(customer))">&#x2716;</a>
-		</li>
-	</ul>
-</div>
+<body>
+	<div id="goods-app">
+		<input type="text" id="input">
+		<ul id="goods-list"></ul>
+		<div id="controls">
+			<label><input type="checkbox" id="mark-all" class="checkbox">All</label>
+			<button id="btn-delete-selected">Delete selected</button>
+		</div>
+	</div>
 </body>
 </html>

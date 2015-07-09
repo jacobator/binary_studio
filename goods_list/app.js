@@ -1,86 +1,60 @@
-angular.module("storeApp", [])
+$(function() {
+	var initVal;
+	var goodsList = $("#goods-list");
+	//adding new goods item
+	$("#input").on("keyup", function(e) {
+		if (e.keyCode == 13 && $(this).val()) {
+			goodsList.append('<li class="goods-item"><input class="checkbox" type="checkbox"><input class="goods-name" \
+				type="text" value="' + $(this).val() + '" readonly><a href class="btn-delete">&#x2716;</a></li>');
+			$(this).val("");
+		}
+	});
 
-.controller("ListController", function($scope) {
-	$scope.products = [{
-		name: "T-shirt",
-		price: 5
-	},
-	{
-		name: "Hat",
-		price: 9.99
-	},
-	{
-		name: "Socks",
-		price: .99
-	},
-	{
-		name: "Coat",
-		price: 50.5
-	},
-	{
-		name: "Gloves",
-		price: 10
-	}];
+	//selecting goods item to edit
+	goodsList.on("dblclick", ":not(.selected) > .goods-name[readonly]", function() {
+		$(this).prop("readonly", false);
+		initVal = $(this).val();
+	});
 
-	$scope.customers = [{
-		name: "Peter Parker",
-		city: "New York",
-		age: 18,
-		avatar: "http://lorempixel.com/50/50/cats/1"
-	},
-	{
-		name: "Sarah Connor",
-		city: "Los Angeles",
-		age: 30,
-		avatar: "http://lorempixel.com/50/50/cats/2"
-	},
-	{
-		name: "Tobias Reaper",
-		city: "London",
-		age: 56,
-		avatar: "http://lorempixel.com/50/50/cats/3"
-	},
-	{
-		name: "Thomas Anderson",
-		city: "New York",
-		age: 27,
-		avatar: "http://lorempixel.com/50/50/cats/4"
-	}];
+	//editing goods item
+	goodsList.on("keyup focusout", ".goods-name:not([readonly])", function(e) {
+		if (e.keyCode == 13) {
+			$(this).prop("readonly", true);
+		}
+		else if (e.keyCode == 27 || e.type == "focusout") {
+			$(this).prop("readonly", true);
+			$(this).val(initVal);
+		}
+	});
 
-	$scope.productsVisibility = true;
-	$scope.customersVisibility = true;
+	goodsList.on("click", ".btn-delete", function(e) {
+		$(this).parent().remove();
+		e.preventDefault();
+	});
 
-	$scope.toggle = function(listVisibility) {
-		$scope[listVisibility] = !$scope[listVisibility];
-	};
+	goodsList.on("change", ".checkbox", function() {
+		if (this.checked) {
+			$(this).parent().addClass("selected");
+		}
+		else {
+			$(this).parent().removeClass("selected");
+		}
+	});
 
-	$scope.addProduct = function() {
-		$scope.products.push({
-			name: "Untitled product",
-			price: getRandomNumber(1, 9999)/100
-		});
-	};
+	//global controls
+	$("#mark-all").change(function() {
+		if (this.checked) {
+			$(".goods-item").addClass("selected");
+			$("#goods-list .checkbox").prop("checked", true);
+		}
+		else {
+			$(".goods-item").removeClass("selected");
+			$("#goods-list .checkbox").prop("checked", false);
+		}
+	});
 
-	$scope.addCustomer = function() {
-		$scope.customers.push({
-			name: "John Doe",
-			city: "Utopia",
-			age: getRandomNumber(15, 90),
-			avatar: "http://lorempixel.com/50/50/cats/" + getRandomNumber(1, 10)
-		});
-	};
-
-	$scope.deleteCustomer = function(index) {
-		$scope.customers.splice(index, 1);
-	};
-})
-
-.filter("nameFilter", function() {
-	return function(name) {
-		return "User: " + name.toUpperCase();
-	}
+	$("#btn-delete-selected").click(function() {
+		$("#goods-list .selected").remove();
+		$("#mark-all").prop("checked", false);
+	});
 });
-
-var getRandomNumber = function(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-};
