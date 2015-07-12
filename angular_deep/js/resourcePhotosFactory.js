@@ -24,7 +24,7 @@
 		}
 
 		function requestCompleted(response) {
-			return response;
+			//no need to do anything
 		}
 
 		function requestFailed(error) {
