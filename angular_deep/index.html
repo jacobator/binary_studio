@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>task 9</title>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" href="css/app.css">
+</head>
+<body ng-app="app">
+	<div id="photos-list" ng-controller="ListController as listCtrl">
+		<ul>
+			<li ng-repeat="photo in listCtrl.photos">
+				<img enlargeable-photo ng-src="{{photo.thumbnailUrl}}">
+				<div class="title-container"><span class="title">{{photo.title}}</span></div>
+			</li>
+		</ul>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-resource.min.js"></script>
+	<script src="js/appModule.js"></script>
+	<script src="js/listController.js"></script>
+	<script src="js/httpPhotosFactory.js"></script>
+	<script src="js/resourcePhotosFactory.js"></script>
+	<script src="js/enlargeablePhotoDirective.js"></script>
+</body>
+</html>
