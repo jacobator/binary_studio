@@ -28,7 +28,6 @@ describe("Inheritance app", function() {
 				var professor = new Professor("J_Smith", 22);
 				expect(professor.field).toBe("Quantum gravity");
 				expect(professor.students).toEqual([]);
-
 				professor = new Professor("   Ben Robin    ", "40", "Theoretical physics");
 				expect(professor.field).toBe("Theoretical physics");
 				expect(professor.students).toEqual([]);
@@ -107,6 +106,9 @@ function behaveAsMan(Person) {
 			person = new Person("       Ali_G2", "40");
 			expect(person.name).toBe("Ali_G2");
 			expect(person.age).toBe(40);
+			person = new Person("Mike II Peterson   ", "30years old");
+			expect(person.name).toBe("Mike II Peterson");
+			expect(person.age).toBe(30);
 		});
 
 		it("should be able to live", function() {
