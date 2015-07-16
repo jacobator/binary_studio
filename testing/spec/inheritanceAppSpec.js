@@ -7,13 +7,17 @@ describe("Inheritance app", function() {
 		behaveAsMan(Student);
 
 		describe("Unique Student behavior", function() {
+			var student;
+
+			beforeEach(function() {
+				student = new Student("Alex", 20);
+			});
+
 			it("should be able to study", function() {
-				var student = new Student("John Doe", 22);
 				expect(student.study).toBeDefined();
 			});
 
 			it("should start studying when asked to", function() {
-				var student = new Student("Alex", 22);
 				student.study();
 				expect(student.isStudying).toBe(true);
 			});
@@ -24,23 +28,26 @@ describe("Inheritance app", function() {
 		behaveAsMan(Professor);
 
 		describe("Unique Professor behavior", function() {
+			var professor;
+
+			beforeEach(function() {
+				professor = new Professor("J_Smith", 40);
+			});
+
 			it("should have a proper field of research and empty list of students", function() {
-				var professor = new Professor("J_Smith", 22);
 				expect(professor.field).toBe("Quantum gravity");
 				expect(professor.students).toEqual([]);
-				professor = new Professor("   Ben Robin    ", "40", "Theoretical physics");
+				professor = new Professor("Ben Robin", 45, "Theoretical physics");
 				expect(professor.field).toBe("Theoretical physics");
 				expect(professor.students).toEqual([]);
 			});
 
 			it("should be able to teach and research", function() {
-				var professor = new Professor("John Connor_1", 22);
 				expect(professor.teach).toBeDefined();
 				expect(professor.research).toBeDefined();
 			});
 
 			it("should add student to students list when teaching him and make him start studying", function() {
-				var professor = new Professor("John", 52, "String theory");
 				var student = new Student("Alex", 22);
 				professor.teach(student);
 				expect(professor.students.length).toBe(1);
@@ -49,7 +56,6 @@ describe("Inheritance app", function() {
 			});
 
 			it("should throw an exception when student is not able to study or is already studying here", function() {
-				var professor = new Professor("John", 52, "String theory");
 				var student = new Student("Alex", 22);
 				var man = new Man("Peter", 30);
 				professor.teach(student);
@@ -65,7 +71,6 @@ describe("Inheritance app", function() {
 			});
 
 			it("should change field of research when starting to research something", function() {
-				var professor = new Professor("John", 52);
 				professor.research("Cookies");
 				expect(professor.field).toBe("Cookies");
 			});
@@ -75,6 +80,12 @@ describe("Inheritance app", function() {
 
 function behaveAsMan(Person) {
 	describe("Shared Man behavior", function() {
+		var person;
+
+		beforeEach(function() {
+			person = new Person("John Doe", 22);
+		});
+
 		it("should throw an exception if no proper name or age is defiened", function() {
 			expect(function() {
 				new Person();
@@ -106,7 +117,6 @@ function behaveAsMan(Person) {
 		});
 
 		it("should have a proper name and age", function() {
-			var person = new Person("John Doe", 22);
 			expect(person.name).toBe("John Doe");
 			expect(person.age).toBe(22);
 			person = new Person("       Ali_G2", "40");
@@ -118,12 +128,10 @@ function behaveAsMan(Person) {
 		});
 
 		it("should be able to live", function() {
-			var person = new Person("John Doe", 22);
 			expect(person.live).toBeDefined();
 		});
 
 		it("should increase age when living", function() {
-			var person = new Person("Alex", 22);
 			var age = person.age;
 			person.live();
 			expect(person.age).toBe(age + 1);
