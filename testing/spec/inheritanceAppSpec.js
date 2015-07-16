@@ -89,10 +89,16 @@ function behaveAsMan(Person) {
 				new Person("Jake", undefined);
 			}).toThrow("person must have a name and an age");
 			expect(function() {
+				new Person("Jeremy", 0);
+			}).toThrow("person must have a name and an age");
+			expect(function() {
 				new Person("   ", 15);
 			}).toThrow("name must be at least 1 character long");
 			expect(function() {
 				new Person("  peter   ", 150);
+			}).toThrow("age must be in range from 1 to 99");
+			expect(function() {
+				new Person("Tom_Hanks", -10);
 			}).toThrow("age must be in range from 1 to 99");
 			expect(function() {
 				new Person("  peter22", "150yo");
