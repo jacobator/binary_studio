@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat</title>
+</head>
+<body>
+	<span id="hello">Hello, Anonym!</span>
+	<div>
+		<input id="name-input" type="text" placeholder="Your name">
+		<input id="save-name-btn" type="button" value="save">
+	</div>
+	<br>
+	<div>
+		<input id="message-input" type="text" placeholder="Your message">
+		<input id="send-message" type="button" value="send">
+	</div>
+		<ul id="messages-list"></ul>
+		<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+		<script>
+			(function () {
+				var greeting = document.getElementById("hello"),
+						nameInput = document.getElementById("name-input"),
+						saveName = document.getElementById("save-name-btn"),
+						messageInput = document.getElementById("message-input"),
+						sendMessage = document.getElementById("send-message"),
+						messagesList = document.getElementById("messages-list");
+				var userName = "Anonym";
+				var socket = io.connect();
+
+				saveName.onclick = function() {
+					userName = nameInput.value.trim() || "Anonym";
+					nameInput.value = "";
+					greeting.innerHTML = "Hello, " + userName + "!";
+				};
+
+				sendMessage.onclick = function() {
+					var data = {
+						user: userName,
+						text: messageInput.value.trim()
+					};
+
+					if (data.text) {
+						messageInput.value = "";
+						socket.emit("chat message", data);
+					}
+				};
+
+				function addListItem(message) {
+					var item = document.createElement("li");
+					item.innerHTML = message.user + ": " + message.text;
+					messagesList.appendChild(item);
+				}
+
+				socket.on("chat history", function(messsages) {
+					for (var i in messsages) {
+						addListItem(messsages[i]);
+					}
+				});
+
+				socket.on("chat message", function(message) {
+					addListItem(message);
+				});
+			})();
+		</script>
+</body>
+</html>
